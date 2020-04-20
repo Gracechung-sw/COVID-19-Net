@@ -32,7 +32,7 @@ def train():
 
     y_pred = model.predict(x)
 
-    #그리고 train 성능 평가. #4/17
+    #그리고 train 성능 평가. 
     #confusion_matrix_info(np.argmax(y, axis=1), np.argmax(y_pred, axis=1),title='confusion_matrix_train')
 
 
