@@ -1,4 +1,5 @@
 import grace_covid_model
+import evaluation
 import numpy as np
 import tensorflow as tf
 
@@ -8,7 +9,7 @@ def train():
     y_onehot = tf.keras.utils.to_categorical(y, 4) #normal, bacterial, viral, COVID-19
     
     #CovidNet(input_shape, num_classes=3):
-    model = grace_covid_model(input_size=(224, 224, 3)).CovidNet() #keras_model.keras_model_build()
+    model = grace_covid_model.CovidNet(input_size=(224, 224, 3)).CovidNet() #keras_model.keras_model_build()
     # model.summary()
     # Implementtation Details: 
     '''
@@ -35,6 +36,6 @@ def train():
     y_pred = model.predict(x)
 
     #그리고 train 성능 평가. 
-    confusion_matrix_info(np.argmax(y, axis=1), np.argmax(y_pred, axis=1),title='confusion_matrix_train')
+    evaluation.confusion_matrix_info(np.argmax(y_onehot, axis=1), np.argmax(y_pred, axis=1),title='confusion_matrix_train')
 
 
